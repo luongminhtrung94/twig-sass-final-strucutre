@@ -45,7 +45,7 @@ function generateJavascript(templateDir){
 	});
 	return newItem;
 }
-const javascriptEntry = generateJavascript("./src/scripts");
+const javascriptEntry = generateJavascript("./src/scripts/bootstrap");
 
 
 // --------------------------------------------- run command
