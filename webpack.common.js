@@ -67,7 +67,7 @@ module.exports = {
 	  },
 	module: {
 	    loaders: [
-			{ test: /\.scss$/, loader: ExtractTextPlugin.extract({
+			{ test: /\.(scss|css)?$/, loader: ExtractTextPlugin.extract({
 					publicPath:"/",
 					fallback: 'style-loader',
 					use: ['css-loader', 'sass-loader']
@@ -114,11 +114,6 @@ module.exports = {
 		]
 	},
 	plugins: [
-		new CopyWebpackPlugin([
-			{ from: './src/lib', to:'./lib'},
-			{ from: './src/assets', to:'./assets'},
-			{ from: './src/inline-scripts', to:'./inline-scripts'},
-		]),
 		new webpack.ProvidePlugin({
             $: "jquery",
 			jQuery: "jquery",
