@@ -24,7 +24,8 @@ function generateHtmlPlugins (templateDir) {
 	  // Create new HTMLWebpackPlugin with options
 	  return new HtmlWebpackPlugin({
 		filename: `${name}.html`,
-		template: path.resolve(__dirname, `${templateDir}/${name}.${extension}`)
+		template: path.resolve(__dirname, `${templateDir}/${name}.${extension}`),
+		cache:true
 	  })
 	})
 }
