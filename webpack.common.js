@@ -71,7 +71,7 @@ module.exports = {
 			{ test: /\.(scss|css)?$/, loader: ExtractTextPlugin.extract({
 					publicPath:"/",
 					fallback: 'style-loader',
-					use: ['css-loader', 'sass-loader']
+					use: ['css-loader', 'sass-loader', 'import-glob-loader']
 				})
 			},
 			{ 
@@ -85,7 +85,7 @@ module.exports = {
 			{ 
 				test: /\.twig$/, 
 				exclude: /node_modules/,
-				loader: 'twig-loader'
+				loader: 'twig-loader',
 			},
 			{ 
 				test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
@@ -123,6 +123,9 @@ module.exports = {
 		new ExtractTextPlugin({
 			filename: "styles/[name].bundle.css"
 		}),  
+		new CopyWebpackPlugin([
+			{ from: './src/scripts/public', to:'./scripts'}
+		]),
     ]
 	.concat(htmlPlugins)
 };

@@ -3,11 +3,17 @@
  const path = require('path');
 
  module.exports = merge(common, {
-   devtool: 'eval',
-   devServer: {
+	devtool: 'eval',
+	devServer: {
 		contentBase: path.join(__dirname, "dist"),
 		compress: true,
-		port: 3000,
-	   	publicPath:"/"
-	}
+		port: 4500,
+		publicPath:"/",
+		historyApiFallback: true,
+		watchContentBase: true,
+		disableHostCheck: true
+	},
+	performance: {
+		hints: false
+	},
  });
