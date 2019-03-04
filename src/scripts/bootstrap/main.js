@@ -1,3 +1,3 @@
 import '../../styles/index.scss';
 
-require("../index");
+require("../private-scripts/index");

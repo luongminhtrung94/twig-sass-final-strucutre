@@ -54,7 +54,7 @@ module.exports = {
   	entry:javascriptEntry ,
   	devtool : "eval",
 	output: {
-		filename: 'scripts/[name].bundle.js',
+		filename: './[name].bundle.js',
 		path: path.resolve(__dirname, 'dist'),
 		publicPath: "./"
 	},
@@ -71,7 +71,7 @@ module.exports = {
 			{ test: /\.(scss|css)?$/, loader: ExtractTextPlugin.extract({
 					publicPath:"/",
 					fallback: 'style-loader',
-					use: ['css-loader', 'sass-loader', 'import-glob-loader']
+					use: ['css-loader?-url', 'sass-loader', 'import-glob-loader']
 				})
 			},
 			{ 
@@ -92,7 +92,7 @@ module.exports = {
 				loader:'file-loader',
 				options:{
 					name: "[name].[hash].[ext]",
-					outputPath: './assets/images',
+					outputPath: './images',
 				}
 			},
 			{
@@ -100,7 +100,7 @@ module.exports = {
 				loader: 'file-loader',
 				options:{
 					name: "[name].[hash].[ext]",
-					outputPath: './assets/media'
+					outputPath: './media'
 				}
 			  },
 			  {
@@ -108,23 +108,23 @@ module.exports = {
 				loader: 'file-loader',
 				options:{
 					name: "[name].[hash].[ext]",
-					outputPath: './assets/fonts',
-					publicPath:"../assets/fonts"
+					outputPath: './fonts',
+					publicPath:"../fonts"
 				}
 			  }
 		]
 	},
 	plugins: [
 		new webpack.ProvidePlugin({
-            $: "jquery",
+			$: "jquery",
 			jQuery: "jquery",
 			_:"underscore"
-        }),
+		}),
 		new ExtractTextPlugin({
-			filename: "styles/[name].bundle.css"
+			filename: "./[name].bundle.css"
 		}),  
 		new CopyWebpackPlugin([
-			{ from: './src/scripts/public', to:'./scripts'}
+			{ from: './src/scripts/public-scripts', to:'./public-scripts'}
 		]),
     ]
 	.concat(htmlPlugins)
